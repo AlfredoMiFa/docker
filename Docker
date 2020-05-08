@@ -9,6 +9,7 @@ docker run -d --name mongodb --net cms-application -p 27017:27017 mongo:4.2.6
 docker start -p 27017:27017 mongo:4.2.6
 docker run -d --link mongodb:mongo --net cms-application -p 8081:8081 mongo-express
 docker start - 8081:8081 mongo-express
+docker network create twitter
 docker pull redis:6.0
 docker run -d --name redis --net twitter -p 6379:6379 redis:6.0
-dnf install redis --> download redis-cli, not enable and run service redis
+dnf install redis --> download redis-cli, not enable and run service redis(only fedora)
