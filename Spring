@@ -1,0 +1,20 @@
+SPRING
+Un estereotipo denota una division conceptual en una capa de arquitectura. Ayuda a los desarrolladores a entender el proposito de la clase y la capa en la cual los beans son representados, ejemplo, Repository significa la capa de acceso a datos.
+La anotacion SpringBoot contiene a su vez otras anotaciones, que son la siguientes:
+Configuration: Indica que esta clase puede producir la definicion de beans para el contenedor de Spring.
+EnableAutoconfiguration: Significa que con el contenedor de Spring ApplicationConext, podra intentar ayudarnos a configurar los beans por default en el contexto especifico. Para la instancia, cuando nosostros creamos una aplicacion web MVC con SpringBoot, probablemente necesitaremos un servidor web contenedor para ejecutarlo. EN una configuracion por default, el contenedor de Spring, junto con EnableAutoconfiguration, podra configurar el bean embebido Tomcat en nuestro contenedor.
+Component: Es un estereotipo, el contenedor entiende cuales clases son consideradas para la auto-deteccion y necesitan ser instanciadas.
+
+mvn clean install spring-boot:run  EMPAQUETAR Y EJECUTAR UNA APLICACION SPRINGBOOT DESDE TERMINAL CON AYUDA DEL PLUGIN DE MAVEN
+mvn celan install   EMPAQUETAMOS NUESTRA APLICACION
+java -jar nameApplication.jar   EJECUTAMOS NUESTRA APLICACION CON AYUDA DE JAVA
+
+REST: REPRESENTATION STATE TRANSFER
+
+@RestController: Indica que nuestra clase podra exponer un endpoint REST encima de los modulos WEB-MVC
+
+Swagger es una herramienta de facto para documentar API's Web, permite a los desarrolladores modelar API's, crear una forma interactiva para jugar con las API's, y asi provee una forma facil de generar la implementacion de clientes en una gran rango de lenguajes.
+
+@Api: Es la anotacion raiz la cual configura esta clase como u recurso de Swagger
+@APiOperation: describe una operacion en nuestra API. EL atributo value es como un resumen del campo en Swagger, esto es algo breve de la operacioon, y notes es una descripcion de una operacion(contenido mucho mas detallado).
+@ApiResponse: Habilita al desarrollador a describir las respuestas de una operacion.
