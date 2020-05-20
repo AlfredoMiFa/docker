@@ -9,7 +9,9 @@ docker run -d --name mongodb --net cms-application -p 27017:27017 mongo:4.2.6
 docker start -p 27017:27017 mongo:4.2.6
 docker run -d --link mongodb:mongo --net cms-application -p 8081:8081 mongo-express
 docker start - 8081:8081 mongo-express
-docker network create twitter
 docker pull redis:6.0
 docker run -d --name redis --net twitter -p 6379:6379 redis:6.0
-dnf install redis --> download redis-cli, not enable and run service redis(only fedora)
+dnf install redis --> download redis-cli, not enable and run service redis
+docker run -d --name hashtag-tracker --link redis:redis --net twitter -p 9090:9090 abahafart/tracked_hashtag
+docker run -d --name rabbitmq --net twitter -p 5672:5672 -p 15672:15672 rabbitmq:3.8.3-management
+docker run -d --name hashtag-tracker --link redis:redis --link rabbitmq:rabbitmq --net twitter -p 9090:9090 abahafart/tracked_hashtag
