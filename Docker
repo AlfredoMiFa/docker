@@ -3,7 +3,7 @@ sudo mount -t cgroup -o none,name=systemd cgroup /sys/fs/cgroup/systemd
 sudo dnf install -y grubby
 sudo grubby --update-kernel=ALL --args="systemd.unified_cgroup_hierarchy=0"
 sudo reboot
-docker login -u abahafart -p mirindadtmf11.
+docker login -u user -p pass
 mvn clean install docker:build
 docker run -d --name mongodb --net cms-application -p 27017:27017 mongo:4.2.6
 docker start -p 27017:27017 mongo:4.2.6
