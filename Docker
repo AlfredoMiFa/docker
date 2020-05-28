@@ -15,3 +15,5 @@ dnf install redis --> download redis-cli, not enable and run service redis
 docker run -d --name hashtag-tracker --link redis:redis --net twitter -p 9090:9090 abahafart/tracked_hashtag
 docker run -d --name rabbitmq --net twitter -p 5672:5672 -p 15672:15672 rabbitmq:3.8.3-management
 docker run -d --name hashtag-tracker --link redis:redis --link rabbitmq:rabbitmq --net twitter -p 9090:9090 abahafart/tracked_hashtag
+docker run -d --name gathering --net twitter --link rabbitmq:rabbitmq -e consumer_key=consumer_key -e consumer_secret=consumer_secret -e access_token=access_token -e access_token_secret=access_toke_secret -p 8083:8083 abahafart/tweet_gathering
+docker run -d --name disppatcher --net twitter --link rabbitmq:rabbitmq -p 8082:8082 abahafart/tweet_dispatcher
