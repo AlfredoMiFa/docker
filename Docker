@@ -20,3 +20,4 @@ docker run -d --name disppatcher --net twitter --link rabbitmq:rabbitmq -p 8082:
 sudo curl -L "https://github.com/docker/compose/releases/download/${VER}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
+docker exec -it git_gathering_1 /bin/bash
