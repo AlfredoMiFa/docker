@@ -1,0 +1,43 @@
+version: '3'
+services:
+  rabbitmq:
+    image: rabbitmq:3.8.3-management
+    hostname: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - solution
+  redis:
+    image: redis:6.0
+    hostname: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - solution
+  tracked:
+    image: abahafart/tracked_hashtag
+    ports:
+      - "9090:9090"
+    networks:
+      - solution
+  gathering:
+    image: abahafart/tweet_gathering
+    ports:
+      - "8082:8082"
+    networks:
+      - solution
+    environment:
+      - consumer_key=6NJCddEALzMqgc99dhWCK0IdB
+      - consumer_secret=hNOKLxk4mSmm979p5l0NuY8MX78lGxCSqEAz5Vr3J45Tg3nVzL
+      - access_token=1193298839979077632-UuXx5aL9B7uHcUPBv4Y0jmyQh1yFqG
+      - access_token_secret=83tuan5MbQwcdA2wKyMy8Q7bBfEpG0CwbM8C3FunBSJ8G
+  dispatcher:
+    image: abahafart/tweet_dispatcher
+    ports:
+      - "8083:8083"
+    networks:
+      - solution
+networks:
+  solution:
+    driver: bridge
